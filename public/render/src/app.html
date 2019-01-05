@@ -1,5 +1,6 @@
 <template>
-   <nav class="navbar" role="navigation" aria-label="main navigation">
+   <!-- the button onClick sends a quitAndInstall message to the electron main process -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
          <a class="navbar-item logo-padding" href="https://www.salesfusion.com">
          <img class= "logo" src="./src/assets/sflogo.png" width="112" height="28">
@@ -45,6 +46,8 @@
             </a>
 
          </div>
+         Version: <span id="version">v1.0.0</span>
+         <button id="ready" onClick="window.ipc.send('quitAndInstall')">no updates ready</button>
 
       </div>
    </nav>

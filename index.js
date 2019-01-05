@@ -1,4 +1,5 @@
 const {app,BrowserWindow,dialog,ipcMain} = require('electron')
+const {autoUpdater} = require("electron-updater");
 var handlers        = require('./routelist.js');
 var hers            = require('./hers.js');
 var secret          = require('./secret.js')
@@ -21,7 +22,10 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', function() {
+  createWindow()
+  autoUpdater.checkForUpdates();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -33,6 +37,16 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
+})
+
+// when the update has been downloaded and is ready to be installed, notify the BrowserWindow
+autoUpdater.on('update-downloaded', (info) => {
+    win.webContents.send('updateReady')
+});
+
+// when receiving a quitAndInstall signal, quit and install the new version ;)
+ipcMain.on("quitAndInstall", (event, arg) => {
+    autoUpdater.quitAndInstall();
 })
 
 var scope = {

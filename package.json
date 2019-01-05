@@ -1,10 +1,13 @@
 {
   "name": "Domain-Tool",
   "version": "0.1.0",
+  "repository": "https://github.com/UserName/RepoName",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "dist": "build"
+    "dist": "build",
+    "build": "build --win",
+    "ship": "build --win -p always"
   },
   "devDependencies": {
     "electron": "^4.0.0",

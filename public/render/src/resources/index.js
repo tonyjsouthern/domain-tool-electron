@@ -9,3 +9,9 @@ SystemJS.config({
   },
   transpiler: 'plugin-babel'
 });
+
+window.ipc.on('updateReady', function(event, text) {
+    // changes the text of the button
+    var container = document.getElementById('ready');
+    container.innerHTML = "new version ready!";
+})

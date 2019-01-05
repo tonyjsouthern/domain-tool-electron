@@ -1,6 +1,6 @@
 {
   "name": "Domain-Tool",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "repository": "https://github.com/UserName/RepoName",
   "main": "index.js",
   "scripts": {

@@ -9,8 +9,6 @@ var Connection      = require('tedious').Connection;
 var sql             = require('sequelize');
 var axios           = require('axios');
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win
 
 function createWindow () {
@@ -32,7 +30,6 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-console.log(process.env)
 
 app.on('activate', () => {
   if (win === null) {
@@ -40,12 +37,10 @@ app.on('activate', () => {
   }
 })
 
-// when the update has been downloaded and is ready to be installed, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
     win.webContents.send('updateReady')
 });
 
-// when receiving a quitAndInstall signal, quit and install the new version ;)
 ipcMain.on("quitAndInstall", (event, arg) => {
     autoUpdater.quitAndInstall();
 })

@@ -1,0 +1,52 @@
+<template>
+   <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+         <a class="navbar-item logo-padding" href="https://www.salesfusion.com">
+         <img class= "logo" src="./src/assets/sflogo.png" width="112" height="28">
+         </a>
+         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" >
+         <span aria-hidden="true"></span>
+         <span aria-hidden="true"></span>
+         <span aria-hidden="true"></span>
+         </a>
+      </div>
+      <div class="navbar-menu">
+         <div class="navbar-start">
+            <a route-href="customer" class="navbar-item">
+            Customer Select
+            </a>
+            <a route-href="tracking" class="navbar-item">
+            Tracking
+            </a>
+            <a route-href="dkim" class="navbar-item">
+            SPF/DKIM
+            </a>
+            <a route-href="cname" class="navbar-item">
+            CNAME
+            </a>
+            <a route-href="whois" class="navbar-item">
+            Who Is
+            </a>
+
+
+            <!--
+            <a route-href="sslcheck" class="navbar-item">
+              SSL Check
+            </a>
+            <a route-href="drt" class="navbar-item">
+            DRT
+            </a>
+            <a route-href="sql" class="navbar-item">
+            SQL
+            </a>
+            -->
+            <a route-href="faq" class="navbar-item">
+            F.A.Q.
+            </a>
+
+         </div>
+
+      </div>
+   </nav>
+   <router-view></router-view>
+</template>

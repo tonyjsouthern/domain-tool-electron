@@ -1,0 +1,87 @@
+<template>
+    <div class="cont box margin-top-extra animated fadeIn faster">
+
+        <!-- SF CNAME CHECKER -->
+        <div class="card">
+            <header class="card-header" click.delegate="toggleSfChecker()">
+                <p class="card-header-title">
+                    Salesfusion CNAME Checker
+                </p>
+                <a class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+							<i class="fas fa-angle-down" aria-hidden="true" ></i>
+						</span>
+                </a>
+            </header>
+            <div class="card-content animated fadeIn faster" class.bind="showSfChecker ? '' : 'hidden'">
+                <div class="content">
+                    <form>
+                        <div class="dkim-cont is-centered">
+                            <p class="title is-6 ">Enter a current Salesfusion customer domain name:</p>
+                            <input class="input" value.bind="cname" placeholder="acme.com">
+                            <button class="button" click.delegate="checkCname()">Submit</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <p class="title is-6" class.bind="showError ? '' : 'hidden'">${results}</p>
+                    <table class.bind="showResults ? '' : 'hidden'" class="table is-striped is-fullwidth is-bordered is-hoverable animated fadeIn faster">
+                        <thead>
+                            <th>Name: ${results.customerName} </th>
+                            <th>Domain: ${results.domainName} </th>
+                            <th>ID: ${results.customerId} </th>
+                        </thead>
+                        <thead>
+                            <th>CNAME Type</th>
+                            <th>Base CNAME</th>
+                            <th>Resolves To:</th>
+                        </thead>
+                        <tr>
+                            <td class="is-bold">Landing Pages</td>
+                            <td>${results.landingPages.cname}</td>
+                            <td>${results.landingPages.results}</td>
+                        </tr>
+                        <tr>
+                            <td class="is-bold">Cookie Server</td>
+                            <td>${results.cookieServer.cname}</td>
+                            <td>${results.cookieServer.results}</td>
+                        </tr>
+                        <tr>
+                            <td class="is-bold">Campaign Links</td>
+                            <td>${results.campaignLinks.cname}</td>
+                            <td>${results.campaignLinks.results}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- SF CNAME CHECKER -->
+
+        <!-- SINGULAR CNAME CHECKER -->
+        <div class="card margin-top">
+            <header class="card-header" click.delegate="toggleSingularChecker()">
+                <p class="card-header-title">
+                    Singular CNAME Checker
+                </p>
+                <a class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+									<i class="fas fa-angle-down" aria-hidden="true"></i>
+								</span>
+                </a>
+            </header>
+            <div class="card-content animated fadeIn faster" class.bind="showSinglularChecker ? '' : 'hidden'">
+                <div class="content">
+                    <form>
+                        <div class="dkim-cont is-centered">
+                            <p class="title is-6 ">Enter a specific CNAME:</p>
+                            <input class="input" value.bind="cnameSingular" placeholder="info.acme.com">
+                            <button class="button" click.delegate="checkCnameSingular()">Submit</button>
+                        </div>
+                    </form>
+                    <p class="title is-5">${resultsSingular}</p>
+                </div>
+            </div>
+        </div>
+        <!-- SINGULAR CNAME CHECKER -->
+
+    </div>
+</template>

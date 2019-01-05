@@ -1,0 +1,67 @@
+<template>
+   <div class="cont box margin-top-extra animated fadeIn faster">
+   <p class="title is-5 is-centered">SPF/DKIM Checker</p>
+   <hr>
+
+   <form>
+      <div class="dkim-cont is-centered">
+         <p class="title is-6 ">Enter Your Domain:</p>
+         <input class="input" value.bind="domain" placeholder="salesfusion.com">
+         <button class="button" click.delegate="compareSpfDkim(domain)">Submit</button>
+      </div>
+   </form>
+   <div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+      <hr>
+      <article class="message has-centered-text" class.bind="dkimLongTF ? 'is-success' : 'is-danger'">
+         <div class="message-header">
+            <p>DKIM Short:</p>
+         </div>
+         <div class="message-body">
+            <p class="is-bold">${dkim.messageLong}</p>
+            <p class="">${dkim.dkimLong}</p>
+         </div>
+      </article>
+
+         <article class="message has-centered-text" class.bind="dkimShortTF ? 'is-success' : 'is-danger'">
+            <div class="message-header">
+               <p>DKIM Long:</p>
+            </div>
+            <div class="message-body">
+               <p class="is-bold">${dkim.messageShort}</p>
+               <p class="">${dkim.dkimShort}</p>
+            </div>
+         </article>
+
+         <hr>
+
+
+      <p class="is-warning title is-5 is-centered">${spfMessage}</p>
+      <article repeat.for="spf of spfs" class="message has-centered-text" class.bind="tfSpf ? 'is-success' : 'is-danger'">
+         <div class="message-header">
+            <p>SPF:</p>
+         </div>
+         <div class="message-body">
+            <p class="is-bold">${spf.message}</p>
+            <p class="">${spf.results}</p>
+         </div>
+      </article>
+   </div>
+
+   <hr>
+
+   <article class="message has-centered-text">
+      <div class="message-header">
+         <p>Examples: </p>
+      </div>
+      <div class="message-body">
+         <p><span class="is-bold">DKIM Long:</span> msgapp._domainkey.${domain}</p>
+         <p><span class="is-bold">DKIM Short:</span> _domainkey.${domain}</p>
+         <hr>
+         <p class="title is-6">DKIM:</p>
+         <p class="">k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDasswtodxAxfHPmN5hipc7y77k5sGjdO5Pf/4kUZ2wuBd9gxCIpnsTjKS88eXkCf0LHaRvmYwNgECQslOAqdirJIqtM08Hym609p1IbV1+eEHXWU1VTLmDDBmEKrG9nl1nrchZUGaIXzDzlq8kZL+pkvQoIid/DoFHW3GbpN2XvwIDAQAB;</p>
+         <hr>
+         <p class="title is-6 ">SPF:</p>
+         <p class="">v=spf1 mx include:auth.msgapp.com ~all</p>
+      </div>
+   </article>
+</template>

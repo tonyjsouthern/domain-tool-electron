@@ -1,0 +1,31 @@
+<template>
+   <div class="cont box margin-top-extra">
+      <p class="title is-5 is-centered">F.A.Q.</p>
+      <hr>
+      <p class="title is-5">Tracking Script:</p>
+      <p class="is-bold">What does this application do?</p>
+      <p>This application takes a given website and checks to see if the following companies tracking scripts are present. If a tracking script is found a "true" value will be returned, otherwise the value will default to false.</p>
+      <p class="is-bold margin-top">How does this application check for tracking scripts?</p>
+      <p>This application uses http and https methods to load a websites HTML. It then scans the entire websites HTMl for common keywords found in tracking scripts.</p>
+      <p class="is-bold margin-top">How can I suggest a tracking script check be added?</p>
+      <p>You can contact tj.southern@salesfusion.com with the tracking script you would like to be added. This will be considered and possible added. If it is added I will reach out and let you know.</p>
+      <p class="is-bold margin-top">How thorough is this application?</p>
+      <p>This application only checks the websites static HTML. It is possible through some vendors to inject the scripts, if this is the case, this application will read false.</p>
+      <hr>
+      <p class="title is-5">SPF/DKM:</p>
+      <p class="is-bold">What does this application do?</p>
+      <p>This application pulls the spf and dkim records for the domain provided. It will pull all SPF records that begin with a v-record and the lone DKIM record. </p>
+      <p class="is-bold margin-top">How does this application check to see if the DKIM/SPF records match?</p>
+      <p>It will first pull all SPF records for the domain provided that begin with a v-record. It will then check each to see if the string contains "msgapp.com". If multiple SPF records are found one may still match but the overall result will return an error. After the SPF check is complete it will pull the DKIM record and directly compare it against the default Salesfusion DKIM record.</p>
+      <hr>
+      <p class="title is-5">CNAME:</p>
+      <p class="is-bold">Salesfusion CNAME Checker</p>
+      <p>This queries against the Salesfusion database for a domain name. It then pulls all related CNAMEs to this domain and resolves them. It will then output in a table the results of the lookup.</p>
+      <p class="is-bold margin-top">Singular CNAME Checker</p>
+      <p>This application simply runs an http lookup to see what a given domain resolves to.</p>
+      <hr>
+      <p class="title is-5">Who Is?</p>
+      <p class="is-bold">What does this application do?</p>
+      <p> This application uses a third party API to perform a "Who Is" lookup on the given domain. It will return common infomrmation about the domains registry.</p>
+   </div>
+</template>

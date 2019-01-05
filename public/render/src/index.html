@@ -1,0 +1,51 @@
+<template>
+  <div class="box cont animated fadeIn faster">
+
+    <p class="title is-5 is-centered">Tracking Script Checker</p>
+    <hr>
+
+    <form>
+    <div class="input-cont is-centered">
+      <p class="title is-6">
+        <span class.bind="domain ? 'hidden' : ''">Enter a URL</span>
+        <span class.bind="domain ? '' : 'hidden'">${domain} </span>
+      </p>
+      <input class="input" placeholder="craneware.com" value.bind="domain">
+      <button class="button margin-top" click.delegate="submitController()">Submit</button>
+    </div>
+  </form>
+
+    <div class="is-danger margin-top animated fadeIn faster is-centered" class.bind="showError ? '' : 'hidden'">
+      <p class=""> Please enter a valid domain name!</p>
+      </div>
+
+    <div class="margin-top animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+    <hr>
+
+    <div class="companies ">
+      <p class="margin-bot"><span class="is-bold">Act-On:</span></p>
+      <p class="margin-bot"><span class="is-bold">Click Dimensions: </span></p>
+      <p class="margin-bot"><span class="is-bold">Google:</span></p>
+      <p class="margin-bot"><span class="is-bold">Marketo:</span></p>
+      <p class="margin-bot"><span class="is-bold">Pardot:</span></p>
+      <p class="margin-bot"><span class="is-bold">Salesfusion:</span></p>
+      <p class="margin-bot"><span class="is-bold">Hubspot:</span></p>
+      <p class="margin-bot"><span class="is-bold">Injectors:</span></p>
+    </div>
+
+    <div class="values-cont">
+      <p class="tf" class.bind="tfObject.actOn ? 'true' : 'false'">${tfObject.actOn}</p>
+      <p class="tf" class.bind="tfObject.clickDimensions ? 'true' : 'false'">${tfObject.clickDimensions}</p>
+      <p class="tf" class.bind="tfObject.google ? 'true' : 'false'">${tfObject.google}</p>
+      <p class="tf" class.bind="tfObject.marketo ? 'true' : 'false'">${tfObject.marketo}</p>
+      <p class="tf" class.bind="tfObject.pardot ? 'true' : 'false'">${tfObject.pardot}</p>
+      <p class="tf" class.bind="tfObject.sf ? 'true' : 'false'">${tfObject.sf}</p>
+      <p class="tf" class.bind="tfObject.hubspot ? 'true' : 'false'">${tfObject.hubspot}</p>
+      <p class="tf" class.bind="tfObject.googleTag ? 'true' : 'false'">${tfObject.googleTag}</p>
+    </div>
+      <p class="margin-top"><span class="bold">NOTE:</span> If injectors is true script read-outs may default to a false value. This indicates the customer is using a script injector such as Google Tag Manger. If this is the case we cannot accurately determine what scripts the website is running.</p>
+
+    </div>
+
+  </div>
+</template>

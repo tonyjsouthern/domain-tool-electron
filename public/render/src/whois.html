@@ -1,0 +1,187 @@
+<template>
+   <div class="cont box margin-top-extra animated fadeIn faster">
+   <p class="title is-5 is-centered">Who Is</p>
+   <hr>
+   <!--
+   <form>
+   -->
+      <div class="dkim-cont is-centered">
+         <p class="title is-6 ">Enter Your domain name:</p>
+         <input class="input" value.bind="domain" placeholder="salesfusion.com">
+         <button class="button" click.trigger="runWhoIs()">Submit</button>
+      </div>
+      <!--
+   </form>
+   -->
+   <hr>
+   <!-- class.bind="showResults ? '' : 'hidden'" -->
+   <div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+
+     <!-- DOMAIN INFORMATION CARD -->
+      <div class="card">
+         <header class="card-header" click.delegate="domainInfoToggle()">
+            <p class="card-header-title">
+               Domain Information
+            </p>
+            <a class="card-header-icon" aria-label="more options" >
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="showDomainInfo ? '' : 'hidden'">
+            <div class="content">
+               <table class="table is-bordered is-hoverable is-fullwidth">
+                  <tr>
+                     <td class="is-bold">Domain</td>
+                     <td>${whoIsResults.whoIs.name}</td>
+                  </tr>
+                  <tr>
+                     <td class="is-bold">Created Date</td>
+                     <td>${whoIsResults.whoIs.created}</td>
+                  </tr>
+                  <tr>
+                     <td class="is-bold">Expiration Date</td>
+                     <td>${whoIsResults.whoIs.expires}</td>
+                  </tr>
+                  <tr>
+                     <td class="is-bold">Registered</td>
+                     <td>${whoIsResults.whoIs.registered}</td>
+                  </tr>
+                  <tr>
+                     <td class="is-bold">Status</td>
+                     <td>${whoIsResults.whoIs.status}</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+      <!-- DOMAIN INFORMATION CARD END -->
+
+      <!-- MX INFORMATION CARD -->
+       <div class="card margin-top">
+          <header class="card-header" click.delegate="mxInfoToggle()">
+             <p class="card-header-title">
+                MX Information
+             </p>
+             <a class="card-header-icon" aria-label="more options" >
+             <span class="icon">
+             <i class="fas fa-angle-down" aria-hidden="true"></i>
+             </span>
+             </a>
+          </header>
+          <div class="card-content animated fadeIn faster" class.bind="showMxInfo ? '' : 'hidden'">
+             <div class="content">
+               <table class="table is-bordered is-hoverable is-fullwidth">
+                  <thead>
+                     <th>Priority</th>
+                     <th>Exhange</th>
+                  </thead>
+                  <tr repeat.for="mx of whoIsResults.mx">
+                     <td>${mx.priority}</td>
+                     <td>${mx.exchange}</td>
+                  </tr>
+               </table>
+             </div>
+          </div>
+       </div>
+       <!-- MX INFORMATION CARD END -->
+
+       <!-- REGISTER INFORMATION CARD -->
+        <div class="card margin-top">
+           <header class="card-header" click.delegate="registerInfoToggle()">
+              <p class="card-header-title">
+                 Register Information
+              </p>
+              <a class="card-header-icon" aria-label="more options" >
+              <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+              </a>
+           </header>
+           <div class="card-content animated fadeIn faster" class.bind="showRegisterInfo ? '' : 'hidden'">
+              <div class="content">
+                <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
+                   <thead>
+                      <th style="border-right: 0px solid !important;">Register Information</th>
+                      <th style="border-left: 0px solid !important;"></th>
+                   </thead>
+                   <tr>
+                      <td class="is-bold">Email</td>
+                      <td>${whoIsResults.whoIs.registrar.email}</td>
+                   </tr>
+                   <tr>
+                      <td class="is-bold">ID</td>
+                      <td>${whoIsResults.whoIs.registrar.id}</td>
+                   </tr>
+                   <tr>
+                      <td class="is-bold">Name</td>
+                      <td>${whoIsResults.whoIs.registrar.name}</td>
+                   </tr>
+                   <tr>
+                      <td class="is-bold">Phone</td>
+                      <td>${whoIsResults.whoIs.registrar.phone}</td>
+                   </tr>
+                   <tr>
+                      <td class="is-bold">URL</td>
+                      <td>${whoIsResults.whoIs.registrar.URL}</td>
+                   </tr>
+                </table>
+              </div>
+           </div>
+        </div>
+        <!-- REGISTER INFORMATION CARD END -->
+
+        <!-- NAME SERVER INFORMATION CARD -->
+         <div class="card margin-top">
+            <header class="card-header" click.delegate="nameServerInfoToggle()">
+               <p class="card-header-title">
+                  Name Server Information
+               </p>
+               <a class="card-header-icon" aria-label="more options" >
+               <span class="icon">
+               <i class="fas fa-angle-down" aria-hidden="true"></i>
+               </span>
+               </a>
+            </header>
+            <div class="card-content animated fadeIn faster" class.bind="showNameServerInfo ? '' : 'hidden'">
+               <div class="content">
+                 <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
+                    <thead>
+                       <th style="border-right: 0px solid !important;">Name Servers</th>
+                       <th style="border-left: 0px solid !important;"></th>
+                    </thead>
+                    <tr repeat.for="server of whoIsResults.whoIs.nameservers">
+                       <td class="is-bold">Server:</td>
+                       <td>${server}</td>
+                    </tr>
+                 </table>
+               </div>
+            </div>
+         </div>
+         <!-- NAME SERVER INFORMATION CARD END -->
+
+      <hr>
+      <div class="contacts animated fadeIn faster" class.bind="whoIsResults.whoIs.contacts.admin[0].name ? '' : 'hidden'">
+         <p class="is-centered title is-5">Contacts:</p>
+         <p class="title is-5 margin-top-extra">Admin:</p>
+         <p><span class="is-bold">Name:</span> ${whoIsResults.whoIs.contacts.admin[0].name}</p>
+         <p><span class="is-bold">Organization:</span> ${whoIsResults.whoIs.contacts.admin[0].organization}</p>
+         <p><span class="is-bold">Email:</span> ${whoIsResults.whoIs.contacts.admin[0].email}</p>
+         <p class="title is-5 margin-top-extra">Owner:</p>
+         <p><span class="is-bold">Name:</span> ${whoIsResults.whoIs.contacts.owner[0].name}</p>
+         <p><span class="is-bold">Organization:</span> ${whoIsResults.whoIs.owner.admin[0].organization}</p>
+         <p><span class="is-bold">Email:</span> ${whoIsResults.whoIs.contacts.owner[0].email}</p>
+         <p class="title is-5 margin-top-extra">Tech:</p>
+         <p><span class="is-bold">Name:</span> ${whoIsResults.whoIs.contacts.tech[0].name}</p>
+         <p><span class="is-bold">Organization:</span> ${whoIsResults.whoIs.contacts.tech[0].organization}</p>
+         <p><span class="is-bold">Email:</span> ${whoIsResults.whoIs.contacts.admin[0].tech}</p>
+         <hr>
+      </div>
+      <div class="text-cont animated fadeIn faster" class.bind="whoIsResults.txt[0].errno ? 'hidden' : ''">
+         <p class="title is-5">Txt Records:</p>
+         <p repeat.for="record of whoIsResults.txt"><span class="is-bold">Record: </span>${record}</p>
+         <hr>
+      </div>
+   </div>
+</template>

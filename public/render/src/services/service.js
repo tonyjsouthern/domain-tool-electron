@@ -3,7 +3,6 @@ export class BackendService {
 
 	// change the URLS to be just the trailing slash endpoint: /tracking, /dkim, etc. for production purposes.
 	constructor() {
-		this.baseUrl = '';
 	}
 
 	checkDomainTracking(domain) {
@@ -28,22 +27,6 @@ export class BackendService {
 
 	checkWhois(domain) {
 		return window.ipc.sendSync('whois', domain);
-	}
-
-	runQuery(config) {
-		return axios.post(this.baseUrl + '/query', {
-			config: config
-		});
-	}
-
-	testConnection(config) {
-		return axios.post(this.baseUrl + '/connect', {
-			config: config
-		});
-	}
-
-	checkSSL(domain) {
-		return axios.get(this.baseUrl + '/sslCheck/' + domain);
 	}
 
 }

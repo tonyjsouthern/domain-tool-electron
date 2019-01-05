@@ -3,6 +3,7 @@
    <p class="title is-5 is-centered">SPF/DKIM Checker</p>
    <hr>
 
+   <!-- FORM FOR TAKING DOMAIN INPUT -->
    <form>
       <div class="dkim-cont is-centered">
          <p class="title is-6 ">Enter Your Domain:</p>
@@ -10,6 +11,9 @@
          <button class="button" click.delegate="compareSpfDkim(domain)">Submit</button>
       </div>
    </form>
+   <!-- END FORM FOR TAKING DOMAIN INPUT-->
+
+   <!-- DISPLAY LONG DKIM RESULTS-->
    <div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
       <hr>
       <article class="message has-centered-text" class.bind="dkimLongTF ? 'is-success' : 'is-danger'">
@@ -22,19 +26,20 @@
          </div>
       </article>
 
-         <article class="message has-centered-text" class.bind="dkimShortTF ? 'is-success' : 'is-danger'">
-            <div class="message-header">
-               <p>DKIM Long:</p>
-            </div>
-            <div class="message-body">
-               <p class="is-bold">${dkim.messageShort}</p>
-               <p class="">${dkim.dkimShort}</p>
-            </div>
-         </article>
+      <!-- DISPLAY SHORT DKIM RESULTS -->
+      <article class="message has-centered-text" class.bind="dkimShortTF ? 'is-success' : 'is-danger'">
+         <div class="message-header">
+            <p>DKIM Long:</p>
+         </div>
+         <div class="message-body">
+            <p class="is-bold">${dkim.messageShort}</p>
+            <p class="">${dkim.dkimShort}</p>
+         </div>
+      </article>
 
-         <hr>
+      <hr>
 
-
+      <!-- DISPLAY SPF RESULTS -->
       <p class="is-warning title is-5 is-centered">${spfMessage}</p>
       <article repeat.for="spf of spfs" class="message has-centered-text" class.bind="tfSpf ? 'is-success' : 'is-danger'">
          <div class="message-header">
@@ -49,6 +54,7 @@
 
    <hr>
 
+   <!-- SPF AND SKIM EXAMPLES -->
    <article class="message has-centered-text">
       <div class="message-header">
          <p>Examples: </p>
@@ -66,4 +72,5 @@
          <p class="">v=spf1 mx include:auth.msgapp.com ~all</p>
       </div>
    </article>
+   
 </template>

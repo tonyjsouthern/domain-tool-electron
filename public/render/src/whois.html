@@ -3,11 +3,13 @@
    <p class="title is-5 is-centered">Who Is</p>
    <hr>
 
+    <form>
       <div class="dkim-cont is-centered">
          <p class="title is-6 ">Enter Your domain name:</p>
          <input class="input" value.bind="domain" placeholder="salesfusion.com">
          <button class="button" click.trigger="runWhoIs()">Submit</button>
       </div>
+    </form>
 
    <hr>
    <div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
@@ -173,10 +175,12 @@
          <p><span class="is-bold">Email:</span> ${whoIsResults.whoIs.contacts.admin[0].tech}</p>
          <hr>
       </div>
+
       <div class="text-cont animated fadeIn faster" class.bind="whoIsResults.txt[0].errno ? 'hidden' : ''">
          <p class="title is-5">Txt Records:</p>
          <p repeat.for="record of whoIsResults.txt"><span class="is-bold">Record: </span>${record}</p>
          <hr>
       </div>
+
    </div>
 </template>

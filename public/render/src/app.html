@@ -1,18 +1,14 @@
 <template>
-   <!-- the button onClick sends a quitAndInstall message to the electron main process -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
          <a class="navbar-item logo-padding">
          <img class= "logo" src="./src/assets/sflogo.png" width="112" height="28">
          </a>
-         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" >
-         <span aria-hidden="true"></span>
-         <span aria-hidden="true"></span>
-         <span aria-hidden="true"></span>
-         </a>
       </div>
+
       <div class="navbar-menu">
          <div class="navbar-start">
+
             <a route-href="customer" class="navbar-item">
             Customer Select
             </a>
@@ -33,6 +29,7 @@
             </a>
 
          </div>
+
          <span class="version">Version: v1.0.6</span>
          <button id="ready" class="button update-button" onClick="window.ipc.send('quitAndInstall')">No Updates Ready</button>
 

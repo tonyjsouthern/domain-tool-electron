@@ -1,7 +1,6 @@
 
 export class BackendService {
 
-	// change the URLS to be just the trailing slash endpoint: /tracking, /dkim, etc. for production purposes.
 	constructor() {
 	}
 

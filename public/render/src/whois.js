@@ -1,9 +1,5 @@
-import {
-	inject
-} from 'aurelia-framework';
-import {
-	BackendService
-} from './src/services/service.js';
+import { inject } from 'aurelia-framework';
+import { BackendService } from './src/services/service.js';
 
 @inject(BackendService)
 export class WhoIs {

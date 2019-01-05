@@ -302,3 +302,11 @@ h2 {
 .button.update-button {
   margin: 7px 10px 0px 0px !important;
 }
+
+.title-no-margin {
+  margin-bottom: 2px !important;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}

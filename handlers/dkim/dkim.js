@@ -38,7 +38,7 @@ function resolveDkimLong (domain) {
 	.catch((error)=> {
 		console.log(error)
 			results.dkimLong = "";
-			results.messageLong = "Error encountered loading dkim"
+			results.messageLong = "Error encountered loading DKIM (DKIM is either configured incorrectly or does not exist.)"
 			results.dkimLongTF = false;
 	})
 }
@@ -60,7 +60,7 @@ function resolveDkimShort (domain) {
 	.catch((error)=> {
 		console.log(error)
 			results.dkimShort = "";
-			results.messageShort = "Error encountered loading dkim"
+			results.messageShort = "Error encountered loading DKIM (DKIM is either configured incorrectly or does not exist.)"
 			results.dkimShortTF = false;
 	})
 }

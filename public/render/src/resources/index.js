@@ -14,5 +14,5 @@ window.ipc.on('updateReady', function(event, text) {
     // changes the text of the button
     console.log("ready")
     var container = document.getElementById('ready');
-    container.innerHTML = "new version ready!";
+    container.innerHTML = "New Version Ready!";
 })

@@ -14,7 +14,7 @@ let win
 function createWindow () {
   win = new BrowserWindow({ width: 1730, height: 900 })
   win.loadFile('./public/render/index.html')
-   win.webContents.openDevTools()
+// win.webContents.openDevTools()
   win.on('closed', () => {
     win = null
   })

@@ -293,3 +293,12 @@ h2 {
 .gradient-choice{
   padding: 12px;
 }
+
+.version {
+  padding-right: 8px;
+  line-height: 50px;
+}
+
+.button.update-button {
+  margin: 7px 10px 0px 0px !important;
+}

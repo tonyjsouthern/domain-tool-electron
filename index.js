@@ -32,6 +32,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+console.log(process.env)
 
 app.on('activate', () => {
   if (win === null) {

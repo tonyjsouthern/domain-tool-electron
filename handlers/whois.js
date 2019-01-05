@@ -9,20 +9,6 @@ function whois (scope, arg) {
     ptr: ""
   }
 
-/*
-  return async function init() {
-    await getWhoIs(domain);
-    await getMx(domain);
-    await getTxt(domain);
-    await getNs(domain);
-    await getPtr(domain);
-    return completeDNS
-  }
-
-
-  init();
-  */
-
   return new Promise((resolve, reject) => {
      console.log("First Promise");
      var whoIsPromise = getWhoIs(domain);

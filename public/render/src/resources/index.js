@@ -12,6 +12,7 @@ SystemJS.config({
 
 window.ipc.on('updateReady', function(event, text) {
     // changes the text of the button
+    console.log("ready")
     var container = document.getElementById('ready');
     container.innerHTML = "new version ready!";
 })
